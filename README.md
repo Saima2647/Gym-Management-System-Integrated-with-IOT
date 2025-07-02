@@ -2,9 +2,23 @@
 
 An IoT-based real-time heart rate monitoring system integrated into gym equipment to enhance user safety, training effectiveness, and operational efficiency.
 
+---
+## 📌Table Content
+- [📌 Project Overview](#-project-overview)
+- [🎯 Objectives](#-objectives)
+- [🛠️ Technologies Used](https://github.com/Saima2647/Gym-Management-System-Integrated-with-IOT/edit/main/README.md#%EF%B8%8F-technologies-used)
+- [📋 Features](#-features)
+- [🧪 Testing](#-testing)
+- [📈 Future Scope](#-future-scope)
+- [📷 System ScreenShots](#-system-screenshots)
+
+---
+
 ## 📌 Project Overview
 
 Traditional gym systems lack the capability to monitor users' physical conditions in real-time. The **Smart Gym Management System** addresses this gap by embedding heart rate sensors into fitness machines and displaying real-time BPM (Beats Per Minute) on OLED displays. This provides users with instant feedback during workouts and alerts when their heart rate is outside the recommended zone. It also offers gym staff valuable insights into user health and performance.
+
+---
 
 ## 🎯 Objectives
 
@@ -13,6 +27,8 @@ Traditional gym systems lack the capability to monitor users' physical condition
 - **User-friendly interface** for monitoring and data visualization.
 - **Integration with IoT cloud platform** for remote data access.
 - **Agile development approach** with iterative testing and deployment.
+
+---
 
 ## 🛠️ Technologies Used
 
@@ -23,11 +39,15 @@ Traditional gym systems lack the capability to monitor users' physical condition
 - Jumper Wires
 - Breadboard
 
+---
+
 ### Software:
 - Arduino IDE
 - ThingSpeak IoT Platform
 - Windows 11 OS
 - XAMPP (for optional data handling)
+
+---
 
 ## 📋 Features
 
@@ -36,6 +56,8 @@ Traditional gym systems lack the capability to monitor users' physical condition
 - 📟 **OLED Display Output** for on-device feedback.
 - 🌐 **WiFi-based Data Upload** to ThingSpeak.
 - 🔄 **Agile SDLC model** with real-time updates and feedback.
+
+---
 
 ## 🧪 Testing
 
@@ -51,12 +73,16 @@ User interface testing confirms:
 - ✅ Responsive OLED updates
 - ✅ No visual glitches
 
+---
+
 ## 📈 Future Scope
 
 - 🧘‍♂️ Stress and fatigue detection
 - 🧠 AI-based personal training recommendations
 - 📲 Fitness tracker integration
 - 🧑‍⚕️ Remote health monitoring for trainers/physicians
+
+---
 
 ## 📷 System ScreenShots
 
