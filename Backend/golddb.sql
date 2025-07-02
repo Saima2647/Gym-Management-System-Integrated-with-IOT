@@ -3,13 +3,23 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2023 at 12:31 PM
+-- Generation Time: Jul 02, 2025 at 09:34 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
--- Database: `golddb`--
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `golddb`
+--
 
 -- --------------------------------------------------------
 
@@ -18,10 +28,10 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 --
 
 CREATE TABLE `contactus` (
-  `c_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `c_id` int(11) NOT NULL,
   `username` varchar(4004) NOT NULL,
-  `email` varchar(400) NOT NULL CHECK (`email` LIKE '%@%' AND `email` LIKE '%.%'),
-  `contact` varchar(20) NOT NULL CHECK (LENGTH(`contact`) = 10),
+  `email` varchar(400) NOT NULL CHECK (`email` like '%@%' and `email` like '%.%'),
+  `contact` varchar(20) NOT NULL CHECK (octet_length(`contact`) = 10),
   `message` varchar(4000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -29,38 +39,9 @@ CREATE TABLE `contactus` (
 -- Dumping data for table `contactus`
 --
 
-INSERT INTO `contactus` ( `username`, `email`, `contact`, `message`) VALUES
-('fghjk', 'dfghj@aol.com', '1234567890', 'kjshfsgd'),
-('gfdgfd', 'sdgfdgd@aol.com', '0987654321', 'ryuiuyfghjk');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
--- Table structure for table `users`
-CREATE TABLE `users` (
-  `userid` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `username` VARCHAR(255) NOT NULL,
-  `email` VARCHAR(255) NOT NULL CHECK (`email` LIKE '%@%' AND `email` LIKE '%.%'),
-  `gender` VARCHAR(10) NOT NULL,
-  `contact` varchar(20) NOT NULL CHECK (LENGTH(`contact`) = 10),
-  `password` VARCHAR(255) NOT NULL,
-  `last_login_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP 
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `users`
---
-
--- Inserting data for table `users`
-INSERT INTO `users` (`username`, `email`, `gender`, `contact`, `password`, `last_login_date`) VALUES
-('werewrwer', 'wqeqwe@emailasdsad.com', 'Male', '9847593485', '54adbc768978d9574b682470bd1f568f5a3f43da', CURRENT_TIMESTAMP),
-('ihobhj', 'abc@email.com', 'Female', '1234567895', '7c4a8d09ca3762af61e59520943dc26494f8941b', CURRENT_TIMESTAMP),
-('tarun', 'tarun@email.com', 'Male', '2165645685', '7c4a8d09ca3762af61e59520943dc26494f8941b', CURRENT_TIMESTAMP),
-('lakshay', 'lakshay@email.com', 'Male', '8526341853', '7c4a8d09ca3762af61e59520943dc26494f8941b', CURRENT_TIMESTAMP),
-('saima', 'saima@email.com', 'Female', '1234567892', '05a971c812297eca3250d85aa366526929d3d983', CURRENT_TIMESTAMP);
+INSERT INTO `contactus` (`c_id`, `username`, `email`, `contact`, `message`) VALUES
+(1, 'fghjk', 'dfghj@aol.com', '1234567890', 'kjshfsgd'),
+(2, 'gfdgfd', 'sdgfdgd@aol.com', '0987654321', 'ryuiuyfghjk');
 
 -- --------------------------------------------------------
 
@@ -69,10 +50,10 @@ INSERT INTO `users` (`username`, `email`, `gender`, `contact`, `password`, `last
 --
 
 CREATE TABLE `trainer` (
-  `trainer_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `trainer_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `mobile_no` varchar(20) NOT NULL CHECK (LENGTH(`mobile_no`) = 10),
-  `email_id` varchar(255) NOT NULL CHECK (`email_id` LIKE '%@%' AND `email_id` LIKE '%.%'),
+  `mobile_no` varchar(20) NOT NULL CHECK (octet_length(`mobile_no`) = 10),
+  `email_id` varchar(255) NOT NULL CHECK (`email_id` like '%@%' and `email_id` like '%.%'),
   `expertise` varchar(255) NOT NULL,
   `experience` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -81,9 +62,81 @@ CREATE TABLE `trainer` (
 -- Dumping data for table `trainer`
 --
 
-INSERT INTO `trainer` (`name`, `mobile_no`, `email_id`, `expertise`, `experience`) VALUES
-('John Doe', '9876543210', 'john@example.com', 'Strength and Conditioning', 8),
-('Lisa Smith', '9123456789', 'lisa@example.com', 'Yoga and Wellness', 6),
-('Alex King', '9988776655', 'alex@example.com', 'Personal Training', 5),
-('Emma Taylor', '9876501234', 'emma@example.com', 'Pilates', 4);
+INSERT INTO `trainer` (`trainer_id`, `name`, `mobile_no`, `email_id`, `expertise`, `experience`) VALUES
+(1, 'John Doe', '9876543210', 'john@example.com', 'Strength and Conditioning', 8),
+(2, 'Lisa Smith', '9123456789', 'lisa@example.com', 'Yoga and Wellness', 6),
+(3, 'Alex King', '9988776655', 'alex@example.com', 'Personal Training', 5),
+(4, 'Emma Taylor', '9876501234', 'emma@example.com', 'Pilates', 4);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `userid` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL CHECK (`email` like '%@%' and `email` like '%.%'),
+  `gender` varchar(10) NOT NULL,
+  `contact` varchar(20) NOT NULL CHECK (octet_length(`contact`) = 10),
+  `password` varchar(255) NOT NULL,
+  `last_login_date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`userid`, `username`, `email`, `gender`, `contact`, `password`, `last_login_date`) VALUES
+(1, 'xyz', 'xyz@gmail.com', 'Female', '2345678901', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '2025-07-03 00:35:49'),
+(2, 'abc', 'abc@gmail.com', 'Male', '2345165437', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '2025-07-03 00:36:30'); --paswword for both is '123'
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `contactus`
+--
+ALTER TABLE `contactus`
+  ADD PRIMARY KEY (`c_id`);
+
+--
+-- Indexes for table `trainer`
+--
+ALTER TABLE `trainer`
+  ADD PRIMARY KEY (`trainer_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`userid`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `contactus`
+--
+ALTER TABLE `contactus`
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `trainer`
+--
+ALTER TABLE `trainer`
+  MODIFY `trainer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
